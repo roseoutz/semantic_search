@@ -1,3 +1,3 @@
 /.env
-/pyproject.toml
 /.idea
+/poetry.lock
