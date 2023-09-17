@@ -7,7 +7,7 @@ class DataTransformerTest(unittest.TestCase):
 
     def test_semantic_transformer(self):
         transformer = DataTransformer()
-        result = transformer.transform("Mongo is awesome")
+        result = transformer.transform("Mongo")
         print(result)
         self.assertTrue(True)
 
