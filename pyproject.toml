@@ -1,9 +1,15 @@
 [tool.poetry]
-name = "sementic-search"
+name = "semantic-search"
 version = "0.1.0"
 description = ""
 authors = ["donggyukim <zeedoutladzz@gmail.com>"]
 readme = "README.md"
+
+[[tool.poetry.source]]
+name = "torchcpu1130"
+url = "https://download.pytorch.org/whl/cpu/"
+default = false
+secondary = true
 
 [tool.poetry.dependencies]
 python = "^3.9"

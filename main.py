@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 
+from transformer.DataTransformer import DataTransformer
+
 app = FastAPI()
 
 
