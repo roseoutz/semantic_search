@@ -9,21 +9,23 @@ class MongoConnector:
         self.client = AsyncIOMotorClient(host=[mongo_url])
         self._data_transformer = DataTransformer()
 
-    async def searchByPlot(self, keyword: str):
+    async def searchByPlot(self, search_type: str, keyword: str):
         vector_query = await self._data_transformer.transform(keyword)
         collection = self.client.sample_mflix.movies
 
-        query_result = collection.aggregate([
+        query_param = [
             {
                 '$search': {
-                    "index": "PlotSemanticSearch",
+                    "index": f"{search_type.capitalize()}SemanticSearch",
                     "knnBeta": {
                         "vector": vector_query,
                         "k": 4,
-                        "path": "plot_embedding_hf"}
+                        "path": f"{search_type}_embedding_hf"}
                 }
             }
-        ])
+        ]
+
+        query_result = collection.aggregate(query_param)
 
         result = [i async for i in query_result]
         return result

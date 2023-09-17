@@ -6,15 +6,10 @@ from data.MovieService import MovieService
 app = FastAPI()
 
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
-@app.get("/plot/{keyword}")
-async def transform(keyword: str):
+@app.get("/movie/{search_type}/{keyword}")
+async def transform(search_type: str = 'title', keyword: str = None):
     movie_service = MovieService()
-    return await movie_service.search(keyword)
+    return await movie_service.search(search_type, keyword)
 
 
 if __name__ == "__main__":
