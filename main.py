@@ -6,7 +6,7 @@ from data.MovieService import MovieService
 app = FastAPI()
 
 
-@app.get("/movie/{search_type}/{keyword}")
+@app.get("/movie/{search_type}")
 async def transform(search_type: str = 'title', keyword: str = None):
     movie_service = MovieService()
     return await movie_service.search(search_type, keyword)
