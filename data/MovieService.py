@@ -10,7 +10,7 @@ class MovieService:
 
     async def search(self, search_type: str, keyword: str):
 
-        if search_type not in ['title', 'plot']:
+        if search_type not in ['title', 'plot', 'actor']:
             raise Exception("not contain")
 
         movies = await self._mongo_client.searchByPlot(search_type, keyword)
